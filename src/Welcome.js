@@ -9,7 +9,7 @@ function Welcome ({user}) {
     }
 
     return (
-    <div className="container text-center">
+    <div className="container text-center pt-4">
         Welcome {user}{" "}
         <a href="/" className="font-weight-bold text-pr">Log out</a>
     </div>
