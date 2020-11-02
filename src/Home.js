@@ -1,7 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.css';
 
-function Home() {
+function Home({user}) {
 
     const bigLetter = {
         fontSize: 1.4 + 'em',
@@ -20,19 +20,25 @@ function Home() {
         in, and picks random users to award giveaways. It's a
         good example of a Single Page Application which includes
         connection to a database and routing. It's a practical
-        way to learn <a href="https://reactjs.org/">React</a> 
+        way to learn <a href="https://reactjs.org/">React</a> {" "}
         with <a href="https://firebase.google.com">Firebase</a>.
       </p>
-
-      <a href="/register" className="btn btn-outline-primary mr-2">
+        {user === null ? (
+            <>
+            <a href="/register" className="btn btn-outline-primary mr-2">
         Register
       </a>
       <a href="/login" className="btn btn-outline-primary mr-2">
         Log In
       </a>
-      <a href="/meetings" className="btn btn-primary">
+      </>
+        ):<></>}
+      
+      {user && (
+          <a href="/meetings" className="btn btn-primary">
         Meetings
       </a>
+      )}
     </div> 
   </div>
 </div>
