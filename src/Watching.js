@@ -5,7 +5,7 @@ function Watching ({user}) {
 
     return (
     <div className="container text-center pt-4">
-        <h1 className="text-primary">Login</h1>
+        <h1 className="text-primary">Watching</h1>
     </div>
   );
 }
