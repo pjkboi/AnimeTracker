@@ -1,24 +1,44 @@
+import {Router} from '@reach/router';
+import firebase from './Firebase.js'
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+
 import Home from './Home.js';
 import Welcome from './Welcome.js';
 import Navigation from './Navigation.js';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import {Router} from '@reach/router';
 import Login from './Login.js';
 import Watching from './Watching.js';
+import { Component } from 'react';
 
-function App() {
 
-  const user = "hello";
-  
-  return (
+class App extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      user: "lol"
+    };
+  }
+
+  componentDidMount() {
+    const ref = firebase.database().ref('user');
+
+    ref.on('value', snapshot => {
+      let FBuser = snapshot.val();
+      console.log("lol " + FBuser);
+      this.setState({ user: FBuser })
+    });
+
+  };
+  render(){
+    return (
     <>
-      <Navigation user = {user}/>
-      <Welcome user={user} />
+      <Navigation user = {this.state.user}/>
+      <Welcome user={this.state.user} />
 
       <Router>
-        <Home path="/" user={user} />
-        <Login path="/login" user={user}/>
+        <Home path="/" user={this.state.user} />
+        <Login path="/login" user={this.state.user}/>
         <Watching path="/watching"/>
       </Router>
 
@@ -26,7 +46,8 @@ function App() {
       
     </>
     
-  );
+    );
+  }
 }
 
 export default App;
