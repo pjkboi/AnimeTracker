@@ -19,7 +19,7 @@ function App() {
       <Router>
         <Home path="/" user={user} />
         <Login path="/login" user={user}/>
-        <Watching />
+        <Watching path="/watching"/>
       </Router>
 
       
