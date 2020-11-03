@@ -1,5 +1,5 @@
 import {Router} from '@reach/router';
-import firebase from './Firebase.js'
+import firebase from './Firebase'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -21,7 +21,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const ref = firebase.database().ref('user');
+    const ref = firebase.database().ref('User');
+    console.log(ref);
 
     ref.on('value', snapshot => {
       let FBuser = snapshot.val();
