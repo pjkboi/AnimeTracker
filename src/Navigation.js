@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-function Navigation() {
+function Navigation({user}) {
 
   return (
     <>
@@ -11,18 +11,27 @@ function Navigation() {
       Meeting Log
     </a>
     <div className="navbar-nav ml-auto">
+      {user && (
         <a className="nav-item nav-link" href="/meetings">
           meetings
         </a>
-        <a className="nav-item nav-link" href="/login">
+      )}
+      {!user &&
+        (<a className="nav-item nav-link" href="/login">
           log in
-        </a>
+        </a>)
+      }
+      {!user && (
         <a className="nav-item nav-link" href="/register">
           register
         </a>
+      )}
+      {user && (
         <a className="nav-item nav-link" href="/login">
           log out
         </a>
+      )}  
+        
     </div>
   </div>
 </nav>
