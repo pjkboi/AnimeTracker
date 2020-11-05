@@ -14,8 +14,17 @@ class Register extends Component {
             passOne: '',
             passTwo: ''
         }
+
+        this.handleEvent = this.handleEvent.bind(this);
     }
     
+    handleEvent(e){
+        const itemName = e.target.value;
+        const itemValue = e.target.value;
+
+        this.setState({ [itemName]:itemValue })
+    }
+
     render(){
         return (
         <form className="mt-3">
@@ -40,6 +49,8 @@ class Register extends Component {
                         placeholder="Display Name"
                         name="displayName"
                         required
+                        value={this.state.displayName}
+                        onChange={this.handleEvent}
                       />
                     </section>
                   </div>
@@ -57,6 +68,8 @@ class Register extends Component {
                       placeholder="Email Address"
                       required
                       name="email"
+                      value={this.state.email}
+                      onChange={this.handleEvent}
                     />
                   </section>
                   <div className="form-row">
@@ -66,6 +79,8 @@ class Register extends Component {
                         type="password"
                         name="passOne"
                         placeholder="Password"
+                        value={this.state.passOne}
+                        onChange={this.handleEvent}
                       />
                     </section>
                     <section className="col-sm-6 form-group">
@@ -75,6 +90,8 @@ class Register extends Component {
                         required
                         name="passTwo"
                         placeholder="Repeat Password"
+                        value={this.state.passTwo}
+                        onChange={this.handleEvent}
                       />
                     </section>
                   </div>
