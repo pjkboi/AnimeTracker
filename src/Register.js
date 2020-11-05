@@ -1,4 +1,5 @@
-
+import {Router} from '@reach/router';
+import firebase from './Firebase';
 import './App.css';
 import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
