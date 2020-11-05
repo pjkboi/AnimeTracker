@@ -19,10 +19,10 @@ class Register extends Component {
     }
     
     handleEvent(e){
-        const itemName = e.target.value;
+        const itemName = e.target.name;
         const itemValue = e.target.value;
 
-        this.setState({ [itemName]:itemValue })
+        this.setState({ [itemName]:itemValue });
     }
 
     render(){
