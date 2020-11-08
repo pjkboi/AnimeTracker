@@ -25,16 +25,17 @@ class App extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   const ref = firebase.database().ref('User');
-  //   console.log(ref);
-
-  //   ref.on('value', snapshot => {
-  //     let FBuser = snapshot.val();
-  //     console.log("lol " + FBuser);
-  //     this.setState({ user: FBuser })
-  //   });
-  // };
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(FBuser => {
+      if(FBuser){
+        this.setState({
+          user: FBuser,
+          displayName: FBuser.displayName,
+          userID: FBuser.uid
+        })
+      }
+    });
+  }
 
   registerUser = userName => {
     firebase.auth().onAuthStateChanged(FBuser => {
