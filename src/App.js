@@ -57,7 +57,7 @@ class App extends Component {
     return (
     <>
       <Navigation user = {this.state.displayName}/>
-      <Welcome user={this.state.displayName} />
+      <Welcome userName={this.state.displayName} />
 
       <Router>
         <Home path="/" user={this.state.displayName} />

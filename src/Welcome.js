@@ -1,7 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.css';
 
-function Welcome ({user}) {
+function Welcome ({userName}) {
 
     const bigLetter = {
         fontSize: 1.4 + 'em',
@@ -10,7 +10,7 @@ function Welcome ({user}) {
 
     return (
     <div className="container text-center pt-4">
-        Welcome {user}{" "}
+        Welcome {userName}{" "}
         <a href="/" className="font-weight-bold text-pr">Log out</a>
     </div>
   );
