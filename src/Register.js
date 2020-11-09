@@ -1,4 +1,4 @@
-import {Router} from '@reach/router';
+import {navigate, Router} from '@reach/router';
 import firebase from './Firebase';
 import './App.css';
 import { Component } from 'react';

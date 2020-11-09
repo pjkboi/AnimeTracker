@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Link} from '@reach/router';
 
-function Navigation({user}) {
+function Navigation({user, logOutUser}) {
 
   return (
     <>
@@ -28,7 +28,8 @@ function Navigation({user}) {
         </Link>
       )}
       {user && (
-        <Link className="nav-item nav-link" to="/login">
+        <Link className="nav-item nav-link" to="/login"
+        onClick={e=>logOutUser(e)}>
           log out
         </Link>
       )}  

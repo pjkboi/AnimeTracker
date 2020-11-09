@@ -1,17 +1,13 @@
 
 import 'bootstrap/dist/css/bootstrap.css';
+import {Link} from '@reach/router';
 
-function Welcome ({userName}) {
-
-    const bigLetter = {
-        fontSize: 1.4 + 'em',
-        fontWeight: 200
-    }
+function Welcome ({userName, logOutUser}) {
 
     return (
     <div className="container text-center pt-4">
         Welcome {userName}{" "}
-        <a href="/" className="font-weight-bold text-pr">Log out</a>
+        <Link to="login" className="font-weight-bold text-pr" onClick = {e => logOutUser(e)}>Log out</Link>
     </div>
   );
 }
