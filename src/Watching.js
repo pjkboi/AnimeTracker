@@ -19,8 +19,8 @@ class Watching extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    name="meetingName"
-                    placeholder="Meeting name"
+                    name="animeName"
+                    placeholder="Anime Name"
                     aria-describedby="buttonAdd"
                   />
                   <div className="input-group-append">
