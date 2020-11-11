@@ -2,6 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { Component } from 'react';
 import firebase from './Firebase';
+import WatchList from './WatchList';
 
 class Watching extends Component {
 
@@ -69,6 +70,24 @@ handleSubmit(e){
                 </div>
               </form>
             </div>
+          </div>
+        </div>
+
+        <div className="col-11 col-md-6 text-center">
+          <div className="card border-top-0 rounded-0">
+            {this.props.watching && this.props.watching.length ? (
+              <div className="card-body py-2"> 
+                <h4 className="card-title font-weight-light m-0">
+                  Currently Watching
+                </h4>
+              </div>
+            ): null}
+
+            {this.props.watching && (
+              <div className="list-group list-group-flush">
+                <WatchList watching={this.props.watching}></WatchList>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -33,6 +33,30 @@ class App extends Component {
           displayName: FBuser.displayName,
           userID: FBuser.uid
         })
+        const watchingRef = firebase
+        .database()
+        .ref('watching/'+ FBuser.uid);
+
+        watchingRef.on('value', snapshot => {
+          let watching = snapshot.val();
+          let watchList = [];
+
+          for(let item in watching){
+            watchList.push({
+              watchID: item, 
+              animeName: watching[item].animeName
+            });
+          }
+          this.setState({
+            watching: watchList,
+            howManyAnime: watchList.length
+          })
+        })
+
+      }else{
+        this.setState({
+          user: null
+        });
       }
     });
   }
@@ -83,7 +107,7 @@ class App extends Component {
         <Home path="/" user={this.state.displayName} />
         <Login path="/login" user={this.state.displayName}/>
         <Register path="/register" registerUser={this.registerUser}/> 
-        <Watching path="/watching" addAnime = {this.addAnime}/>
+        <Watching path="/watching" watching={this.state.watching} addAnime = {this.addAnime}/>
       </Router>
 
       
