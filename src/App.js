@@ -66,6 +66,11 @@ class App extends Component {
     })
   }
 
+  addAnime = animeName => {
+    const ref = firebase.database().ref(`watching/${this.state.user.uid}`);
+    ref.push({animeName: animeName})
+  }
+
   render(){
     return (
     <>
@@ -78,7 +83,7 @@ class App extends Component {
         <Home path="/" user={this.state.displayName} />
         <Login path="/login" user={this.state.displayName}/>
         <Register path="/register" registerUser={this.registerUser}/> 
-        <Watching path="/watching"/>
+        <Watching path="/watching" addAnime = {this.addAnime}/>
       </Router>
 
       

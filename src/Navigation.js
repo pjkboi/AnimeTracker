@@ -9,7 +9,7 @@ function Navigation({user, logOutUser}) {
       <nav className="site-nav family-sans navbar navbar-expand bg-primary navbar-dark higher">
   <div className="container-fluid">
     <Link to="/" className="navbar-brand">
-      Meeting Log
+      Anime Tracker
     </Link>
     <div className="navbar-nav ml-auto">
       {user && (
