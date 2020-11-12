@@ -107,7 +107,7 @@ class App extends Component {
         <Home path="/" user={this.state.displayName} />
         <Login path="/login" user={this.state.displayName}/>
         <Register path="/register" registerUser={this.registerUser}/> 
-        <Watching path="/watching" watching={this.state.watching} addAnime = {this.addAnime}/>
+        <Watching path="/watching" watching={this.state.watching} addAnime = {this.addAnime} userID={this.state.userID}/>
       </Router>
 
       

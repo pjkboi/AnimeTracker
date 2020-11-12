@@ -85,7 +85,7 @@ handleSubmit(e){
 
             {this.props.watching && (
               <div className="list-group list-group-flush">
-                <WatchList watching={this.props.watching}></WatchList>
+                <WatchList watching={this.props.watching} userID={this.props.userID}></WatchList>
               </div>
             )}
           </div>
