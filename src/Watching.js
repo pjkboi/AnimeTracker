@@ -1,7 +1,6 @@
 
 import 'bootstrap/dist/css/bootstrap.css';
 import { Component } from 'react';
-import firebase from './Firebase';
 import WatchList from './WatchList';
 
 class Watching extends Component {

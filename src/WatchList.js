@@ -1,6 +1,5 @@
 
 import 'bootstrap/dist/css/bootstrap.css';
-import {Link} from '@reach/router';
 import { Component } from 'react';
 import firebase from './Firebase';
 
