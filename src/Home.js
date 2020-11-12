@@ -1,3 +1,4 @@
+import { Link } from '@reach/router';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function Home({user}) {
@@ -31,9 +32,9 @@ function Home({user}) {
         ):<></>}
       
       {user && (
-          <a href="/meetings" className="btn btn-primary">
-        Meetings
-      </a>
+          <Link to="/watching" className="btn btn-primary">
+        Currently Watching
+      </Link>
       )}
     </div> 
   </div>
