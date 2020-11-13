@@ -31,7 +31,7 @@ handleEvent(e){
 
 handleSubmit(e){
   e.preventDefault();
-  this.props.addAnime(this.state.animeName);
+  this.props.addAnime(this.state.animeName, this.state.animeEpisode);
   this.setState({animeName: ''});
 }
 

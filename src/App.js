@@ -44,7 +44,8 @@ class App extends Component {
           for(let item in watching){
             watchList.push({
               watchID: item, 
-              animeName: watching[item].animeName
+              animeName: watching[item].animeName,
+              animeEpisode: watching[item].animeEpisode
             });
           }
           this.setState({
@@ -92,7 +93,7 @@ class App extends Component {
 
   addAnime = animeName => {
     const ref = firebase.database().ref(`watching/${this.state.user.uid}`);
-    ref.push({animeName: animeName})
+    ref.push({animeName: animeName, animeEpisode: 1})
   }
 
   render(){

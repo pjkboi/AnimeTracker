@@ -16,12 +16,16 @@ class Watching extends Component {
 
         ref.remove();
     }
-
+    increaseEpisode = (e, whichAnime, episodeNumber) => {
+        e.preventDefault();
+        const ref = firebase.database().ref(`watching/${this.props.userID}/${whichAnime}`);
+        episodeNumber++;
+        ref.update({animeEpisode: episodeNumber});
+    }
     render(){
 
         const {watching} = this.props;
         const myWatchList = watching.map(item => {
-            console.log(this.props);
             return(
                 <div className="list-group-item d-flex" key={item.watchID}>
                     <section className="btn-group align-self-center" role="group" aria-label="Watching Options">
@@ -29,11 +33,16 @@ class Watching extends Component {
                         title="Delete Anime"
                         onClick={e => this.deleteAnime(
                             e, item.watchID
-                        )}></button>
+                        )}>Delete</button>
                     </section>
                     <section className="pl-3 text-left align-self-center">
-                        {item.animeName}
+                        {item.animeName}, Episode: {item.animeEpisode}
                     </section>
+                    <button className="btn btn-sm btn-outline-secondary ml-auto p-2 bd-highlight"
+                        title="Delete Anime"
+                        onClick={e => this.increaseEpisode(
+                            e, item.watchID, item.animeEpisode
+                        )}>Next Episode</button>
                 </div>
             )
             
