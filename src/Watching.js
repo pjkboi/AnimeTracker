@@ -34,12 +34,11 @@ handleEvent(e){
 handleSubmit(e){
   e.preventDefault();
   this.addAnime(this.state.animeName, this.state.animeEpisode);
-  this.setState({animeName: ''});
+  this.setState({animeName: '', animeEpisode: ''});
 }
 
 addAnime(animeName, animeEpisode) {
   const ref = firebase.database().ref(`watching/${this.props.userID}`);
-  console.log(animeEpisode);
   ref.push({animeName: animeName, animeEpisode: animeEpisode})
 }
 

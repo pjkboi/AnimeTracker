@@ -8,6 +8,7 @@ class Watching extends Component {
     constructor(props){
         super(props);
         this.deleteAnime = this.deleteAnime.bind(this);
+        this.increaseEpisode = this.increaseEpisode.bind(this);
     }
 
     deleteAnime = (e, whichAnime) => {
@@ -22,6 +23,12 @@ class Watching extends Component {
         episodeNumber++;
         ref.update({animeEpisode: episodeNumber});
     }
+    finishedAnime = (e, whichAnime, animeName) => {
+        e.preventDefault();
+        const ref = firebase.database().ref(`finished/${this.props.userID}`);
+        ref.push({animeName: animeName});
+        this.deleteAnime(e, whichAnime);
+    }
     render(){
 
         const {watching} = this.props;
@@ -34,7 +41,9 @@ class Watching extends Component {
                         onClick={e => this.deleteAnime(
                             e, item.watchID
                         )}>Delete</button>
-                        
+                        <button className="btn btn-sm btn-outline-secondary"
+                        title="Finished Anime"
+                        onClick={e => this.finishedAnime(e, item.watchID, item.animeName)}>Finished</button>
                     </section>
                     <section className="pl-3 text-left align-self-center">
                         {item.animeName}, Episode: {item.animeEpisode}

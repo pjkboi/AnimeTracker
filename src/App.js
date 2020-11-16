@@ -10,7 +10,7 @@ import Welcome from './Welcome.js';
 import Navigation from './Navigation.js';
 import Login from './Login.js';
 import Watching from './Watching.js';
-
+import Finished from './Finished';
 import Register from './Register';
 
 
@@ -54,6 +54,27 @@ class App extends Component {
           })
         })
 
+        const finishedRef = firebase
+        .database()
+        .ref('finished/'+ FBuser.uid);
+
+        finishedRef.on('value', snapshot => {
+          let finished = snapshot.val();
+          let finishedList = [];
+
+          for(let item in finished){
+            finishedList.push({
+              finishID: item, 
+              animeName: finished[item].animeName
+            });
+          }
+          this.setState({
+            finished: finishedList,
+            howManyAnime: finishedList.length
+          })
+        })
+        
+
       }else{
         this.setState({
           user: null
@@ -72,7 +93,6 @@ class App extends Component {
           displayName: FBuser.displayName,
           userID: FBuser.uid
         });
-        console.log(FBuser);
         navigate('/watching');
       })
     })
@@ -91,12 +111,6 @@ class App extends Component {
     })
   }
 
-  addAnime(animeName, animeEpisode) {
-    const ref = firebase.database().ref(`watching/${this.state.user.uid}`);
-    console.log(animeEpisode);
-    ref.push({animeName: animeName, animeEpisode: animeEpisode})
-  }
-
   render(){
     return (
     <>
@@ -110,6 +124,7 @@ class App extends Component {
         <Login path="/login" user={this.state.displayName}/>
         <Register path="/register" registerUser={this.registerUser}/> 
         <Watching path="/watching" watching={this.state.watching} userID={this.state.userID}/>
+        <Finished path="/finished" finished={this.state.finished} userID={this.state.userID}/>
       </Router>
 
       

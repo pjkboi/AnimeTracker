@@ -32,9 +32,14 @@ function Home({user}) {
         ):<></>}
       
       {user && (
+        <>
           <Link to="/watching" className="btn btn-primary">
-        Currently Watching
-      </Link>
+            Currently Watching
+          </Link>
+          <Link to="/finished" className="btn btn-primary">
+            Finished Watching
+          </Link>
+       </>
       )}
     </div> 
   </div>

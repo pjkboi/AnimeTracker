@@ -13,9 +13,14 @@ function Navigation({user, logOutUser}) {
     </Link>
     <div className="navbar-nav ml-auto">
       {user && (
+        <>
         <Link className="nav-item nav-link" to="/watching">
           Watching
         </Link>
+        <Link className="nav-item nav-link" to="/finished">
+          Finished
+        </Link>
+      </>
       )}
       {!user &&
         (<Link className="nav-item nav-link" to="/login">
