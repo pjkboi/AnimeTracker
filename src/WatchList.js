@@ -34,6 +34,7 @@ class Watching extends Component {
                         onClick={e => this.deleteAnime(
                             e, item.watchID
                         )}>Delete</button>
+                        
                     </section>
                     <section className="pl-3 text-left align-self-center">
                         {item.animeName}, Episode: {item.animeEpisode}

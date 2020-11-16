@@ -2,13 +2,15 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { Component } from 'react';
 import WatchList from './WatchList';
+import firebase from './Firebase';
 
 class Watching extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-        animeName: ''
+        animeName: '',
+        animeEpisode: ''
     }
 
     this.handleEvent = this.handleEvent.bind(this);
@@ -31,8 +33,14 @@ handleEvent(e){
 
 handleSubmit(e){
   e.preventDefault();
-  this.props.addAnime(this.state.animeName, this.state.animeEpisode);
+  this.addAnime(this.state.animeName, this.state.animeEpisode);
   this.setState({animeName: ''});
+}
+
+addAnime(animeName, animeEpisode) {
+  const ref = firebase.database().ref(`watching/${this.props.userID}`);
+  console.log(animeEpisode);
+  ref.push({animeName: animeName, animeEpisode: animeEpisode})
 }
 
   render(){
@@ -57,13 +65,22 @@ handleSubmit(e){
                     value={this.state.animeName}
                     onChange={this.handleEvent}
                   />
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="animeEpisode"
+                    placeholder="Episode Number"
+                    aria-describedby="buttonAdd"
+                    value={this.state.animeEpisode}
+                    onChange={this.handleEvent}
+                  />
                   <div className="input-group-append">
                     <button
                       type="submit"
                       className="btn btn-sm btn-info"
                       id="buttonAdd"
                     >
-                      +
+
                     </button>
                   </div>
                 </div>
