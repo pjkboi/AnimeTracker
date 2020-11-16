@@ -4,7 +4,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Component } from 'react';
 
-
 import Home from './Home.js';
 import Welcome from './Welcome.js';
 import Navigation from './Navigation.js';
@@ -14,8 +13,9 @@ import Finished from './Finished';
 import Register from './Register';
 
 
-class App extends Component {
 
+class App extends Component {
+  _isMounted = false;
   constructor(){
     super();
     this.state = {
@@ -25,7 +25,9 @@ class App extends Component {
     };
   }
 
+  
   componentDidMount() {
+    this._isMounted = true;
     firebase.auth().onAuthStateChanged(FBuser => {
       if(FBuser){
         this.setState({
@@ -82,7 +84,9 @@ class App extends Component {
       }
     });
   }
-
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
   registerUser = userName => {
     firebase.auth().onAuthStateChanged(FBuser => {
       FBuser.updateProfile({
