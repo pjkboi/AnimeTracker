@@ -21,14 +21,7 @@ handleEvent(e){
     const itemName = e.target.name;
     const itemValue = e.target.value;
 
-    this.setState({ [itemName]:itemValue }, () => {
-      if(this.state.passOne !== this.state.passTwo){
-        this.setState({errorMessage: 'Passwords do not match'});
-      }
-      else {
-        this.setState({errorMessage: null});
-      }
-    });
+    this.setState({ [itemName]:itemValue });
 }
 
 handleSubmit(e){

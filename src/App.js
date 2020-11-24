@@ -56,27 +56,6 @@ class App extends Component {
           })
         })
 
-        const finishedRef = firebase
-        .database()
-        .ref('finished/'+ FBuser.uid);
-
-        finishedRef.on('value', snapshot => {
-          let finished = snapshot.val();
-          let finishedList = [];
-
-          for(let item in finished){
-            finishedList.push({
-              finishID: item, 
-              animeName: finished[item].animeName
-            });
-          }
-          this.setState({
-            finished: finishedList,
-            howManyAnime: finishedList.length
-          })
-        })
-        
-
       }else{
         this.setState({
           user: null
@@ -128,7 +107,7 @@ class App extends Component {
         <Login path="/login" user={this.state.displayName}/>
         <Register path="/register" registerUser={this.registerUser}/> 
         <Watching path="/watching" watching={this.state.watching} userID={this.state.userID}/>
-        <Finished path="/finished" finished={this.state.finished} userID={this.state.userID}/>
+        <Finished path="/finished" userID={this.state.userID}/>
       </Router>
 
       
